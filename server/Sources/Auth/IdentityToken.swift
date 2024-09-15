@@ -1,7 +1,7 @@
 import Vapor
 import JWT
 
-struct IdentityToken: JWTPayload {
+public struct IdentityToken: JWTPayload {
     enum CodingKeys: String, CodingKey {
         case subject = "sub"
         case expiration = "exp"
@@ -9,12 +9,12 @@ struct IdentityToken: JWTPayload {
         case issuedAt = "iat"
     }
 
-    var subject: SubjectClaim
-    var expiration: ExpirationClaim
-    var issuer: IssuerClaim
-    var issuedAt: IssuedAtClaim
+    public var subject: SubjectClaim
+    public var expiration: ExpirationClaim
+    public var issuer: IssuerClaim
+    public var issuedAt: IssuedAtClaim
 
-    func verify(using signer: JWTSigner) throws {
+    public func verify(using signer: JWTSigner) throws {
         try self.expiration.verifyNotExpired()
     }
 }

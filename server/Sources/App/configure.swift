@@ -9,6 +9,9 @@ public func configure(_ app: Application) async throws {
     )
 
     app.middleware.use(CORSMiddleware(configuration: corsConfiguration), at: .beginning)
+
+    app.auth.signingKey = "ch4ng3m3pl3453"
+    app.auth.useRoutes()
     app.middleware.use(AuthMiddleware())
 
     // register routes
